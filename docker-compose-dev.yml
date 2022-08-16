@@ -1,0 +1,23 @@
+version: "3.3"
+
+services:
+  postgres:
+    image: postgres:14-bullseye
+    restart: always
+    environment:
+      POSTGRES_USER: calc
+      POSTGRES_PASSWORD: calc
+      POSTGRES_DB: calc
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+
+  calc:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    command: echo  1234
