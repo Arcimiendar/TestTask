@@ -20,4 +20,11 @@ services:
       - "8000:8000"
     depends_on:
       - postgres
-    command: echo  1234
+    command: >
+      bash -c
+      "
+        alembic upgrade head && 
+        python -m app.debug
+      "
+    volumes:
+      - ./:/app/
