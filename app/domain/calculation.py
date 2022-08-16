@@ -9,6 +9,12 @@ else:
     Base = object
 
 
+class MathError(ValueError):
+    def __init__(self, *args, detailed: str):
+        self.detailed = detailed
+        super(MathError, self).__init__(*args)
+
+
 class OperationOptions(str, Enum):
     add = '+'
     sub = '-'
@@ -16,11 +22,17 @@ class OperationOptions(str, Enum):
     mul = '*'
 
 
+def div(left: float, right: float) -> float:
+    if right == 0:
+        raise MathError('Divizion by 0', detailed='right operand equals to 0 (may be 0, +0, -0)')
+    return left / right
+
+
 functors = {
-    OperationOptions.add: lambda r, l: r + l,
-    OperationOptions.mul: lambda r, l: r * l,
-    OperationOptions.div: lambda r, l: r / l,
-    OperationOptions.sub: lambda r, l: r - l,
+    OperationOptions.add: lambda l, r: l + r,
+    OperationOptions.mul: lambda l, r: l * r,
+    OperationOptions.div: div,
+    OperationOptions.sub: lambda l, r: l - r,
 }
 
 
