@@ -40,4 +40,3 @@ class OperationCalculationMixin(Base):
 
     def calculate(self) -> float:
         return functors[self.operation](self.left_operand, self.right_operand)
-
