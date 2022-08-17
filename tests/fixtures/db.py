@@ -14,8 +14,8 @@ def db():
     # alembic init
     connection = ConnectionFactory.get_connection()
     yield connection
-    # alembic downgrade
     connection.close()
+    # alembic downgrade
     command.downgrade(config, 'base')
 
 
