@@ -1,4 +1,7 @@
 def test_sum_endoint(client, db):
+    """
+    Test operation succed, record in DB and output object is correct
+    """
     test_obj = {'left_operand': 12, 'right_operand': 33, 'result': 45}
     response = client.request(
         'POST', '/api/v1/add',
@@ -20,6 +23,9 @@ def test_sum_endoint(client, db):
 
 
 def test_div_endoint(client, db):
+    """
+    Test operation succed, record in DB and output object is correct
+    """
     test_obj = {'left_operand': 12, 'right_operand': 4, 'result': 3}
     response = client.request(
         'POST', '/api/v1/div',
@@ -41,6 +47,9 @@ def test_div_endoint(client, db):
 
 
 def test_div_endpoint_failed(client, db):
+    """
+    Test operation failed, record is not in DB
+    """
     test_obj = {'left_operand': 12, 'right_operand': 0}
     response = client.request(
         'POST', '/api/v1/div',
@@ -58,6 +67,9 @@ def test_div_endpoint_failed(client, db):
 
 
 def test_sub_endoint(client, db):
+    """
+    Test operation succed, record in DB and output object is correct
+    """
     test_obj = {'left_operand': 12, 'right_operand': 33, 'result': -21}
     response = client.request(
         'POST', '/api/v1/sub',
@@ -79,6 +91,9 @@ def test_sub_endoint(client, db):
 
 
 def test_mul_endoint(client, db):
+    """
+    Test operation succed, record in DB and output object is correct
+    """
     test_obj = {'left_operand': 5, 'right_operand': 3, 'result': 15}
     response = client.request(
         'POST', '/api/v1/mul',

@@ -13,6 +13,9 @@ app.include_router(v1_router, prefix='/api/v1')
 
 @app.exception_handler(MathError)
 def math_error_handler(_: Request, exc: MathError):
+    """
+    Catch math errors
+    """
     return JSONResponse(
         status_code=422,
         content={
@@ -30,4 +33,7 @@ def math_error_handler(_: Request, exc: MathError):
 
 @app.on_event('startup')
 def startup():
-    ConnectionFactory.initialize(get_settings().db_uri)
+    """
+    Put code which should be run only once on app startup below
+    """
+    ConnectionFactory.initialize(get_settings().db_uri)  # initialize connection factory

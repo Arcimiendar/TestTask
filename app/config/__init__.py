@@ -2,18 +2,20 @@ from functools import lru_cache
 
 from pydantic import (
     BaseSettings,
-    AnyUrl
+    PostgresDsn
 )
 
 
-class AnyUrlWithoutHost(AnyUrl):
-    host_required = False
-
-
 class Settings(BaseSettings):
-    db_uri: AnyUrlWithoutHost = 'postgresql://calc:calc@postgres:5432/calc'
+    """
+    all variable will be taken from env, else default will be used
+    """
+    db_uri: PostgresDsn = 'postgresql://calc:calc@postgres:5432/calc'
 
 
-@lru_cache
+@lru_cache  # to parse settings once
 def get_settings() -> Settings:
+    """
+    :return: application settings
+    """
     return Settings()
