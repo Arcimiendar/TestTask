@@ -10,11 +10,11 @@ services:
       POSTGRES_DB: calc
     volumes:
       - ./pg_data:/var/lib/postgresql/data
-      - ./pg_init:/docker-entrypoint-initdb.d
 
   calc:
     build:
       context: .
+      dockerfile: Dockerfile.prod
     restart: always
     ports:
       - "8000:8000"
