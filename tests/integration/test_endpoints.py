@@ -13,6 +13,10 @@ def test_sum_endoint(client, db):
         """, (test_obj['left_operand'], test_obj['right_operand'], test_obj['result']))
         data = curs.fetchall()
     assert data and data[0], 'No record in DB'
+    out_obj = response.json()
+    assert out_obj['left_operand'] == test_obj['left_operand']
+    assert out_obj['right_operand'] == test_obj['right_operand']
+    assert out_obj['result'] == test_obj['result']
 
 
 def test_div_endoint(client, db):
@@ -30,6 +34,10 @@ def test_div_endoint(client, db):
         """, (test_obj['left_operand'], test_obj['right_operand'], test_obj['result']))
         data = curs.fetchall()
     assert data and data[0], 'No record in DB'
+    out_obj = response.json()
+    assert out_obj['left_operand'] == test_obj['left_operand']
+    assert out_obj['right_operand'] == test_obj['right_operand']
+    assert out_obj['result'] == test_obj['result']
 
 
 def test_div_endpoint_failed(client, db):
@@ -64,6 +72,10 @@ def test_sub_endoint(client, db):
         """, (test_obj['left_operand'], test_obj['right_operand'], test_obj['result']))
         data = curs.fetchall()
     assert data and data[0], 'No record in DB'
+    out_obj = response.json()
+    assert out_obj['left_operand'] == test_obj['left_operand']
+    assert out_obj['right_operand'] == test_obj['right_operand']
+    assert out_obj['result'] == test_obj['result']
 
 
 def test_mul_endoint(client, db):
@@ -81,3 +93,7 @@ def test_mul_endoint(client, db):
         """, (test_obj['left_operand'], test_obj['right_operand'], test_obj['result']))
         data = curs.fetchall()
     assert data and data[0], 'No record in DB'
+    out_obj = response.json()
+    assert out_obj['left_operand'] == test_obj['left_operand']
+    assert out_obj['right_operand'] == test_obj['right_operand']
+    assert out_obj['result'] == test_obj['result']
