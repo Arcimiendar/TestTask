@@ -58,6 +58,6 @@ class OperationCalculationMixin(Base):
     def calculate(self) -> float:
         """
         perform "Busyness logic" of computation
-        :return: result computation
+        :return: result of computation
         """
         return functors[self.operation](self.left_operand, self.right_operand)
