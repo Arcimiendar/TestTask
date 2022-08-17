@@ -11,7 +11,7 @@ This command will bring up all services:
 ```shell
 docker-compose -f docker-compose-dev.yml up 
 ```
-If You're runnin UNIX-like system (MacOS or Linux, for example) you may create 
+If You're running UNIX-like system (MacOS or Linux, for example) you may create 
 a link to compose file like this:
 ```shell
 ln -s docker-compose-dev.yml docker-compose.yml
