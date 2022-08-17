@@ -1,4 +1,9 @@
-# Simple Calculator 
+# Simple Calculator
+
+<div align="center">
+    <img src="https://github.com/Arcimiendar/TestTask/actions/workflows/tests.yml/badge.svg" alt="WF result"/>
+</div>
+
 ## How to run server
 ### In dev environment
 To run in dev environment You need to use `docker-compose-dev.yml` file.

@@ -1,0 +1,20 @@
+name: Run tests
+on: [ push]
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build container
+        run: docker-compose -f docker-compose-dev.yml build
+      - name: Up deps
+        run: docker-compose -f docker-compose-dev.yml up -d postgres
+      - name: Tests
+        run: docker-compose -f docker-compose-dev.yml run --rm calc pytest --junitxml='result.xml'
+      - name: JUnit Report Action
+        uses: mikepenz/action-junit-report@v3.2.0
+        if: always() # always run even if the previous step fails
+        with:
+          report_paths: 'result.xml'
+      - name: Clean up
+        run: docker-compose -f docker-compose-dev.yml stop && rm result.xml
