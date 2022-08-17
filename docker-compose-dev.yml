@@ -12,6 +12,7 @@ services:
       - "5432:5432"
     volumes:
       - ./pg_data:/var/lib/postgresql/data
+      - ./pg_init:/docker-entrypoint-initdb.d
 
   calc:
     build:
@@ -26,5 +27,8 @@ services:
         alembic upgrade head && 
         python -m app.debug
       "
+    environment:
+      db_uri: postgresql://calc:calc@postgres:5432/calc
+      test_uri: postgresql://calc:calc@postgres:5432/calc_test
     volumes:
       - ./:/app/
