@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  postgres:
+    image: postgres:14-bullseye
+    restart: always
+    environment:
+      POSTGRES_USER: calc
+      POSTGRES_PASSWORD: calc
+      POSTGRES_DB: calc
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+      - ./pg_init:/docker-entrypoint-initdb.d
+
+  calc:
+    build:
+      context: .
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    command: >
+      bash -c
+      "
+        alembic upgrade head && 
+        uvicorn app.main:app --host 0.0.0.0 --port 8000
+      "
+    environment:
+      db_uri: postgresql://calc:calc@postgres:5432/calc
+      test_uri: postgresql://calc:calc@postgres:5432/calc_test
