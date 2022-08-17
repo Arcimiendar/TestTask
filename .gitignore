@@ -1,3 +1,4 @@
 pg_data
 docker-compose.yml
 .idea
+.coverage

@@ -1,2 +1,2 @@
-from .db import *
-from .app import *
+from .db import *  # NoQA
+from .app import *  # NoQA

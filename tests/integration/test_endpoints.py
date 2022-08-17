@@ -7,7 +7,7 @@ def test_sum_endoint(client, db):
     assert response.status_code == 200
     with db.cursor() as curs:
         curs.execute("""
-            SELECT left_operand, right_operand, result 
+            SELECT left_operand, right_operand, result
             FROM calculation_result
             WHERE left_operand = %s AND right_operand = %s AND result = %s;
         """, (test_obj['left_operand'], test_obj['right_operand'], test_obj['result']))
@@ -24,7 +24,7 @@ def test_div_endoint(client, db):
     assert response.status_code == 200
     with db.cursor() as curs:
         curs.execute("""
-            SELECT left_operand, right_operand, result 
+            SELECT left_operand, right_operand, result
             FROM calculation_result
             WHERE left_operand = %s AND right_operand = %s AND result = %s;
         """, (test_obj['left_operand'], test_obj['right_operand'], test_obj['result']))
@@ -41,7 +41,7 @@ def test_div_endpoint_failed(client, db):
     assert response.status_code == 422
     with db.cursor() as curs:
         curs.execute("""
-            SELECT left_operand, right_operand, result 
+            SELECT left_operand, right_operand, result
             FROM calculation_result
             WHERE left_operand = %s AND right_operand = %s;
         """, (test_obj['left_operand'], test_obj['right_operand']))
@@ -58,7 +58,7 @@ def test_sub_endoint(client, db):
     assert response.status_code == 200
     with db.cursor() as curs:
         curs.execute("""
-            SELECT left_operand, right_operand, result 
+            SELECT left_operand, right_operand, result
             FROM calculation_result
             WHERE left_operand = %s AND right_operand = %s AND result = %s;
         """, (test_obj['left_operand'], test_obj['right_operand'], test_obj['result']))
@@ -75,7 +75,7 @@ def test_mul_endoint(client, db):
     assert response.status_code == 200
     with db.cursor() as curs:
         curs.execute("""
-            SELECT left_operand, right_operand, result 
+            SELECT left_operand, right_operand, result
             FROM calculation_result
             WHERE left_operand = %s AND right_operand = %s AND result = %s;
         """, (test_obj['left_operand'], test_obj['right_operand'], test_obj['result']))

@@ -17,5 +17,3 @@ def db():
     connection.close()
     # alembic downgrade
     command.downgrade(config, 'base')
-
-
